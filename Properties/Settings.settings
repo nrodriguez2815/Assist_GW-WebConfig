@@ -1,0 +1,46 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Assist_WebConfig.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MainDB" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=;Initial Catalog=Assist;Persist Security Info=True;User ID=;Password=&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=;Initial Catalog=Assist;Persist Security Info=True;User ID=;Password=</Value>
+    </Setting>
+    <Setting Name="ClientFDB" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=;Initial Catalog=ClientF;Persist Security Info=True;User ID=;Password=&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=;Initial Catalog=ClientF;Persist Security Info=True;User ID=;Password=</Value>
+    </Setting>
+    <Setting Name="ApiAuthClient" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Testing Api Client</Value>
+    </Setting>
+    <Setting Name="DefaultCredentials" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Email" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">PassRecoveryTest.NDR@gmail.com</Value>
+    </Setting>
+    <Setting Name="EnableSsl" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">R3c0v3ry2021!</Value>
+    </Setting>
+    <Setting Name="Port" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="SmtpClient" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">smtp.gmail.com</Value>
+    </Setting>
+    <Setting Name="UrlDomain" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">https://localhost:44315/</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

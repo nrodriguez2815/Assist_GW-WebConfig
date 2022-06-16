@@ -1,0 +1,92 @@
+﻿@model Assist_WebConfig.Models.ConfigurationModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="color:#e44126">
+        <hr />
+        @Html.HiddenFor(model => model.InstanceId, new { id = ViewBag.InstanceId })
+        <div class="form-group">
+            @Html.LabelFor(model => model.VehiclesListCheckTimer, "Vehicles Timer", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.VehiclesListCheckTimer, new { htmlAttributes = new { @class = "form-control", @placeholder = "Minutes" } })
+                @Html.ValidationMessageFor(model => model.VehiclesListCheckTimer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.XmlsSenderTimer, "Sender Timer", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.XmlsSenderTimer, new { htmlAttributes = new { @class = "form-control", @placeholder = "Seconds" } })
+                @Html.ValidationMessageFor(model => model.XmlsSenderTimer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LogTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => x.LogTypeId, new SelectList(ViewBag.LogTypeId, "Id", "Description"), new { id = "Selected", onchange = "CheckLog()" })
+                @Html.ValidationMessageFor(model => model.LogTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" id="Path" hidden>
+            @Html.LabelFor(model => model.LogPath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LogPath, new { htmlAttributes = new { @class = "form-control", @id = "PathCheck", @placeholder = "C:\\Assist_Logs" } })
+                @Html.ValidationMessageFor(model => model.LogPath, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Retries, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Retries, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter a value for this field" } })
+                @Html.ValidationMessageFor(model => model.Retries, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InstanceName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InstanceName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Instance Name" } })
+                @Html.ValidationMessageFor(model => model.InstanceName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn-sm btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="text-align: center">
+    <a class="btn-sm btn-primary" style="text-decoration:none" href="@Url.Action("Index", "Configuration", new { id = ViewBag.InstanceId })">Back</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function CheckLog() {
+        var selected = $('#Selected').val();
+        if (selected == "4") {
+            $('#Path').hide();
+        }
+        else if (selected == 2 || selected == 3) {
+            $('#Path').show();
+            $('#PathCheck').prop("required", true)
+        }
+        else if (selected == 1) {
+            $('#Path').hide();
+        }
+    };
+</script>

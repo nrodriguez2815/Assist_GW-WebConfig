@@ -1,0 +1,68 @@
+﻿@model Assist_WebConfig.Models.AccountModel
+
+@{
+    ViewBag.Title = "Add Account";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal" style="color:#e44126">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.InstanceId,
+        new { @id = "InstanceId", Value = ViewBag.InstanceId })
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AccountId, new { htmlAttributes = new { onchange = "UserCheck()", @class = "form-control", @id = "Account" } })
+                @Html.ValidationMessageFor(model => model.AccountId, "", new { @class = "text-danger" })
+                <p id="Status" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" id="submit" class="btn-sm btn-danger" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="text-align: center">
+    <a class="btn-sm btn-primary" style="text-decoration:none" href="@Url.Action("Index", "Account", new { id = ViewBag.InstanceId })">Back</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function UserCheck() {
+        $("#Status").html("Checking...");
+        $.post("@Url.Action("CheckAccount", "Account")",
+            {
+                instanceId: $("#InstanceId").val(),
+                accountId: $("#Account").val()
+            },
+        function (data) {
+            if (data == 0) {
+                $("#Status").html('<font color="Green">Correct! This account was found in ClientF database.</font>');
+                $("#Account").css("border-color", "Green");
+                document.getElementById("submit").disabled = false;
+            }
+            else if (data == 1) {
+                $("#Status").html('<font color="Red">Error!.This account doesn\'t exists in ClientF database.</font>');
+                $("#Account").css("border-color", "Red");
+                document.getElementById("submit").disabled = true;
+            }
+            else {
+                $("#Status").html('<font color="Red">Error!.This account is already set up.</font>');
+                $("#Account").css("border-color", "Red");
+                document.getElementById("submit").disabled = true;
+            }
+        });
+    }
+</script>

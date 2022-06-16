@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Assist_WebConfig.Models.ConfigurationModel>
+
+@{
+    ViewBag.Title = "Configuration";
+}
+
+<table class="table table-striped text-center" style="color:#e44126">
+    <tr>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.VehiclesListCheckTimer)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.XmlsSenderTimer)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.LogPath)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.Retries)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.InstanceName)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.InstallationDate)
+        </th>
+        <th style="text-align:center">
+            Actions
+        </th>
+        <th style="text-align:right">
+            @if (Model.Any() == false)
+            {
+                <a href="@Url.Action("Add", "Configuration", new { id = ViewBag.InstanceId })" title="Add Configuration"><i class="fa fa-plus"></i></a>
+            }
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="color:#000000">
+            @Html.HiddenFor(modelItem => item.InstanceId)
+            <td>
+                @Html.DisplayFor(modelItem => item.VehiclesListCheckTimer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.XmlsSenderTimer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LogPath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Retries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstanceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstallationDate)
+            </td>
+            <td>
+                <a class="btn-sm btn-primary" style="text-decoration:none" href="@Url.Action("Edit", "Configuration", new { id = item.InstanceId })" title="Edit Configuration"><i class="fa fa-pencil"></i></a>
+                <a class="btn-sm btn-primary" onclick="return confirm('Are you sure you want to delete this item?');" style="text-decoration:none" href="@Url.Action("Delete", "Configuration", new { id = item.InstanceId })" title="Delete Configuration"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div style="text-align: center">
+    <a class="btn-sm btn-primary" style="text-decoration:none" href="@Url.Action("Index", "Instance")">Back</a>
+</div>

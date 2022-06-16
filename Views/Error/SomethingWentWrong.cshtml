@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Something went wrong</title>
+</head>
+<body>
+    <div>
+        <center>
+            <div class="col-md-offset-2 col-md-10">
+                <img src='@Url.Content("~/Root/Img/LogoSmall.jpg")' />
+            </div>
+            <h1>@ViewBag.ErrorMessage</h1>
+            <br />
+            <div class="col-md-offset-2 col-md-10">
+                <a href='@Url.Action("Index","Home")'>
+                    <img src='@Url.Content("~/Root/Img/Logo.png")' />
+                </a>
+            </div>
+        </center>
+    </div>
+</body>
+</html>

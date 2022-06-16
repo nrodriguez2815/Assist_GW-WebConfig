@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Assist_WebConfig.Models.AccountModel>
+@{
+    ViewBag.Title = "Accounts";
+}
+
+<table class="table table-striped text-center" style="margin-top:20px; color:#e44126">
+    <tr>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.InstanceId)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.AccountId)
+        </th>
+        <th style="text-align:center">
+            Action
+        </th>
+        <th style="text-align:center">
+            <a href="@Url.Action("Add", "Account", new { id = ViewBag.InstanceId })" title="Add New Account"><i class="fa fa-plus"></i></a>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="color:#000000">
+            <td>
+                @Html.DisplayFor(modelItem => item.InstanceId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountId)
+            </td>
+            <td>
+                <a class="btn-sm btn-primary" onclick="return confirm('Are you sure you want to delete this item?');" style="text-decoration:none" href="@Url.Action("Delete", "Account", new { instanceId = item.InstanceId, accountId = item.AccountId })" title="Delete Account"><i class="fa fa-trash"></i></a>
+            </td>
+            <td></td>
+        </tr>
+    }
+
+</table>
+
+<div style="text-align: center">
+    <a class="btn-sm btn-primary" style="text-decoration:none" href="@Url.Action("Index", "Instance")">Back</a>
+</div>

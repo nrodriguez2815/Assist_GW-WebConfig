@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Client Argentina SA</title>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/png" href="~/Root/img/LogoSmall.jpg">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background:#dcddde">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("Assist", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @title = "Home" })
+            </div>
+            <p style="font-style:italic; color:#47719d" class="navbar-text navbar-right">
+                @if (Session["username"] != null)
+                {
+                    <strong style="color:white" title="Current User">Hi! </strong> @Session["username"].ToString() <a href="@Url.Action("Logout", "Home")" style="margin-left:10px" title="Log Out"><i class="fa fa-sign-out"></i></a>
+                }
+                @if (Session["userType"] != null)
+                {
+                    if (Session["userType"].ToString().Equals("Admin"))
+                    {
+                        <a href="@Url.Action("Index", "User")" style="margin-left:10px; color:white" title="Users Panel"><i class="fa fa-user"></i></a>
+                    }
+                }
+            </p>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <div class="navbar-fixed-bottom text-center" style="background-color: #dcddde; padding-top: 10px">
+            <p>&copy; Client Argentina S.A. @DateTime.Now.Year | Assist | <a href="https://www.mandil-solutions.com/" target="_blank" style="text-decoration:none">Mandil Solutions</a></p>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row" style="margin-top:5%; text-align:center">
+    <div class="col-sm-8 col-md-6">
+        <div class="thumbnail" style="border-style:none">
+            <div class="caption">
+                @if (!Session["userType"].ToString().Equals("Visit"))
+                {
+                    <a class="btn btn-default" href="/AssistWebConfig/instance/index" style="text-decoration:none; border:none" title="Instance">
+                        <img src="~/Root/img/h1.png" alt="..." style="max-height:300px; max-width:300px">
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 col-md-6">
+        <div class="thumbnail" style="border-style:none">
+            <div class="caption">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-default dropdown-toggle" style="border:none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a href="#" style="text-decoration:none; color:#92b0da" title="Logs">
+                            <img src="~/Root/img/h3.png" alt="..." style="max-height:300px; max-width:300px">
+                        </a>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" style="border:none">
+                        <li style="text-align:center"><a href="/AssistWebConfig/log/Activity" style="text-decoration:none" title="App registered activity"><p>Activity</p></a></li>
+                        <li style="text-align:center"><a href="/AssistWebConfig/log/Xmls" style="text-decoration:none" title="Last sent Xml per license"><p>Xmls</p></a></li>
+                        <li style="text-align:center"><a href="/AssistWebConfig/log/Errors" style="text-decoration:none" title="App registered errors"><p>Errors</p></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

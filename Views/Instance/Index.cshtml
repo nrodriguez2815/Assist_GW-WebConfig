@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Assist_WebConfig.Models.InstanceModel>
+
+@{
+    ViewBag.Title = "Instance";
+}
+
+<table class="table table-striped text-center" style="margin-top:20px; color:#e44126">
+    <tr>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.InstanceId)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.IPAddressIn)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.PortIn)
+        </th>
+        <th style="text-align:center">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th style="text-align:center">
+            Accounts
+        </th>
+        <th style="text-align:center">
+            Actions
+        </th>
+        <th style="text-align:center">
+            Configuration
+        </th>
+        <th style="text-align:right">
+            <a href="@Url.Action("Add", "Instance")" title="Add New Address"><i class="fa fa-plus"></i></a>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="color:#000000">
+            <td style="font-size:large">
+                <strong>@Html.DisplayFor(modelItem => item.InstanceId)</strong>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IPAddressIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PortIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a class="btn-sm btn-primary" style="text-decoration:none" href="@Url.Action("Index", "Account", new { id = item.InstanceId })" title="Get and Set Accounts"><i class="fa fa-binoculars"></i></a>
+            </td>
+            <td>
+                <a class="btn-sm btn-primary" style="text-decoration:none" href="@Url.Action("Edit", "Instance", new { id = item.InstanceId })" title="Edit Instance"><i class="fa fa-pencil"></i></a>
+                <a class="btn-sm btn-primary" onclick="return confirm('Are you sure you want to delete this item?');" style="text-decoration:none" href="@Url.Action("Delete", "Instance", new { id = item.InstanceId })" title="Delete Instance"><i class="fa fa-trash"></i></a>
+            </td>
+            <td>
+                <a class="btn-sm btn-primary" style="text-decoration:none" href="@Url.Action("Index", "Configuration", new { id = item.InstanceId })" title="Get and Set Configuration"><i class="fa fa-cogs"></i></a>
+            </td>
+            <td></td>
+        </tr>
+    }
+
+</table>
